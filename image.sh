@@ -22,21 +22,21 @@ if [[ -f "${1}" ]] && [[ -n "${1}" ]]
 		y=$(file -F. "${fil}" |grep -o "[0-9]\{1,\}x[0-9]\{1,\}"|tail -n1|cut -d'x' -f2)
 		if [ "${x}" -lt "${y}" ]
 		then
-			ts=$((${x}-${rr}))
-			if [ "${ts}" -lt "${rd}" ]
+			#ts=$((${x}-${rr}))
+			if [ "${x}" -lt "${rr}" ]
 			then
-				echo "Изображение \"${fil}\" меньше допустимого размера - пропускаем"
+				echo "Изображение \"${fil}\" меньше заданного размера - пропускаем"
 			else
-				convert -resize ${ts}X${y} ${fil} ${fil%.*}${add}.jpg
+				convert -resize ${rr}X${y} ${fil} ${fil%.*}${add}.jpg
 			fi
 		elif [ "${y}" -lt "${x}" ]
 		then
-			ts=$((${x}-${rr}))
-			if [ "${ts}" -lt "${rd}" ]
+			#ts=$((${x}-${rr}))
+			if [ "${y}" -lt "${rr}" ]
 			then
-				echo "Изображение \"${fil}\" меньше допустимого размера - пропускаем"
+				echo "Изображение \"${fil}\" меньше заданного размера - пропускаем"
 			else
-				convert -resize ${x}X${ts} ${fil} ${fil%.*}${add}.jpg
+				convert -resize ${x}X${rr} ${fil} ${fil%.*}${add}.jpg
 			fi
 		elif [ "${y}" -eq "${x}" ]
 		then
@@ -50,21 +50,21 @@ else
 		y=$(file -F. "${fil}" |grep -o "[0-9]\{1,\}x[0-9]\{1,\}"|tail -n1|cut -d'x' -f2)
 		if [ "${x}" -lt "${y}" ]
 		then
-			ts=$((${x}-${rr}))
-			if [ "${ts}" -lt "${rd}" ]
+			#ts=$((${x}-${rr}))
+			if [ "${x}" -lt "${rr}" ]
 			then
-				echo "Изображение \"${fil}\" меньше допустимого размера - пропускаем"
+				echo "Изображение \"${fil}\" меньше заданного размера - пропускаем"
 			else
-				convert -resize ${ts}X${y} ${fil} ${fil%.*}${add}.jpg
+				convert -resize ${rr}X${y} ${fil} ${fil%.*}${add}.jpg
 			fi
 		elif [ "${y}" -lt "${x}" ]
 		then
-			ts=$((${x}-${rr}))
-			if [ "${ts}" -lt "${rd}" ]
+			#ts=$((${x}-${rr}))
+			if [ "${y}" -lt "${rr}" ]
 			then
-				echo "Изображение \"${fil}\" меньше допустимого размера - пропускаем"
+				echo "Изображение \"${fil}\" меньше заданного размера - пропускаем"
 			else
-				convert -resize ${x}X${ts} ${fil} ${fil%.*}${add}.jpg
+				convert -resize ${x}X${rr} ${fil} ${fil%.*}${add}.jpg
 			fi
 		elif [ "${y}" -eq "${x}" ]
 		then
